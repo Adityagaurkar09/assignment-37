@@ -25,7 +25,8 @@
 
 <div id="task-container">
 </div>
-
+<input type="text" id="task-input" placeholder="enter a task">
+<button onclick="addTask()">Add Task</button>
 
 <script>
     const tasks = [];
@@ -65,6 +66,17 @@
              loadTasks();
         }
   
+        function addTask(){
+            const taskinputElement = document.getElementById("task-input");
+            const task = taskinputElement.value;
+            if(!task){
+                alert("enter a task");
+                return;
+            }
+            tasks.push(task);
+            loadTasks();
+            taskinputElement.value = '';
+        }
     
     
     

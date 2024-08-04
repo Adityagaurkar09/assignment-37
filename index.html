@@ -38,7 +38,7 @@
         }
         loadTasks();
     }
-   
+    loadFromLocalStorage();
 
     function loadTasks (){
       localStorage.setItem('allTasks', JSON.stringify(tasks));

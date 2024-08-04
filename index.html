@@ -6,27 +6,70 @@
     <title>to-do-app</title>
 </head>
 <style>
+    body{
+        background-color: #253cbe;
+    }
+    h1{
+        display: block;
+        text-align: center;
+    }
+    .addTask-btn{
+        display: flex;
+        justify-content: center;
+        margin: 25px auto;
+        
+    }
+    #task-input{
+    width: 500px;
+    height: 40px;
+    border-radius: 10px; 
+    padding: 3px;
+    font-size: 20px;
+    background-color:#255bbe;
+
+    }
+    .add{
+        height: 40px;
+        border-radius: 10px; 
+        margin-left: 20px;
+        margin-top: 5px;
+        font-size: 20px;
+        background-color:#255bbe;
+        color: white;
+    }
     .containt{
+        height: 40px;
+        font-size: 25px;
         border: 4px double black;
-        margin: 5px;
-        padding: 5px;
+        padding-top: 10px;
+        margin-top: 10px;
         border-radius: 15px;
-         background-color: rgb(229, 219, 219);
+         background-color:#255bbe;
+         color: white;
          display: flex;
-         justify-content: space-between;
+        
     }
     .btn{
-        height: 20px;
-        width: auto;
+        height: 25px;
+        width: 25px;
+        margin-right: 25px;
+        margin-left: 10px;
+        background-color:white;
+        color: #255bbe;
+        border-radius: 20px;
+        font-weight: 700;
     }
 </style>
 <body>
  <h1>TO DO APP</h1>
+<div class="addTask-btn">
+ <input type="text" id="task-input" placeholder="enter a task">
+<button class="add" onclick="addTask()">Add Task</button>
+</div>
 
 <div id="task-container">
 </div>
-<input type="text" id="task-input" placeholder="enter a task">
-<button onclick="addTask()">Add Task</button>
+
 
 <script>
     const tasks = [];
@@ -51,10 +94,11 @@
         {
             taskcontainer.innerHTML += `
             <div class = "containt">
-                 ${task}
-                <button class = "btn" type = "button" onclick = "deletatsk('${task}')">
-                    delet
+                  <button class = "btn" type = "button" onclick = "deletatsk('${task}')">
+                   X
                     </button>
+                 ${task}
+              
                 </div>
                 `
         }

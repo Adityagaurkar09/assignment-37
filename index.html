@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do-app</title>
+</head>
+<style>
+    .containt{
+        border: 4px double black;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 15px;
+         background-color: rgb(229, 219, 219);
+         display: flex;
+         justify-content: space-between;
+    }
+    .btn{
+        height: 20px;
+        width: auto;
+    }
+</style>
+<body>
+ <h1>TO DO APP</h1>
+
+<div id="task-container">
+</div>
+
+
+<script>
+    const tasks = [];
+
+    function loadFromLocalStorage(){
+        const allTasks = JSON.parse(localStorage.getItem('allTasks'));
+
+        if(allTasks){
+            tasks.push(...allTasks)
+        }
+        loadTasks();
+    }
+   
+
+    function loadTasks (){
+      localStorage.setItem('allTasks', JSON.stringify(tasks));
+
+        const taskcontainer = document.getElementById(`task-container`);
+        taskcontainer.innerHTML = ``;
+
+        for(const task of tasks)
+        {
+            taskcontainer.innerHTML += `
+            <div class = "containt">
+                 ${task}
+                <button class = "btn" type = "button" onclick = "deletatsk('${task}')">
+                    delet
+                    </button>
+                </div>
+                `
+        }
+          }
+          
+        function deletatsk(task){
+             const taskindex = tasks.indexOf(task);
+             tasks.splice(taskindex, 1);
+             loadTasks();
+        }
+  
+    
+    
+    
+</script>
+</body>
+</html>
